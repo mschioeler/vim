@@ -21,6 +21,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'vim-ruby/vim-ruby'
+Plug 'scrooloose/nerdtree'
 call plug#end()
 
 " =========== ABBREVIATIONS ===========
@@ -233,6 +234,10 @@ set wrap "Wrap lines
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => Moving around, tabs, windows and buffers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" NERDTree
+" Add Alt + F1 as shortcut to open up NERDTree (or close it)
+noremap <F4> :NERDTreeToggle<CR>
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
