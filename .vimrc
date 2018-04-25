@@ -87,16 +87,16 @@ inoremap jk <Esc>
 " Arpeggio nmap ½9 ]
 " Arpeggio nmap ½0 }
 
-"""more ergonomic special braces
-"nmap ½7 {
-"nmap ½8 [
-"nmap ½9 ]
-"nmap ½0 }
+""more ergonomic special braces
+nmap ½7 {
+nmap ½8 [
+nmap ½9 ]
+nmap ½0 }
 
-" inoremap ½7 {
-" inoremap ½8 [
-" inoremap ½9 ]
-" inoremap ½0 }
+inoremap ½7 {
+inoremap ½8 [
+inoremap ½9 ]
+inoremap ½0 }
 
 "add subdirectories to file path (for file completion)
 set path+=**
