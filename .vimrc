@@ -104,6 +104,11 @@ set path+=**
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" make Ctrl+Space autocomplete
+inoremap <Tab> <C-n>
+inoremap <S-Tab> <C-P>
+
 " Sets how many lines of history VIM has to remember
 set history=500
 
