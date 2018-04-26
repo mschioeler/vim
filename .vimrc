@@ -13,7 +13,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'vim-ruby/vim-ruby'
 Plug 'scrooloose/nerdtree'
-Plug 'shmargum/vim-sass-colors'
+" Plug 'shmargum/vim-sass-colors'
 call plug#end()
 
 " =========== ABBREVIATIONS ===========
@@ -187,14 +187,6 @@ endtry
 
 set background=dark
 
-"" Set extra options when running in GUI mode
-"if has("gui_running")
-"    set guioptions-=T
-"    set guioptions-=e
-"    set t_Co=256
-"    set guitablabel=%M\ %t
-"endif
-
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
@@ -330,9 +322,6 @@ map <leader>ss :setlocal spell!<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-" make the status bar more subtle and nice looking with dark theme
-highlight StatusLine ctermfg=black ctermbg=white
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ruby on Rails
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -365,7 +354,8 @@ set encoding=utf8
 if has("termguicolors")
   set termguicolors
 endif
-
+" let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+" let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions-=T
@@ -373,7 +363,6 @@ if has("gui_running")
     set t_Co=256
     set guitablabel=%M\ %t
 endif
-
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
@@ -383,8 +372,13 @@ endif
 " highlight the status bar when in insert mode
 " from ChrisHunt
 if version >= 700
-  au InsertEnter * hi StatusLine ctermfg=235 ctermbg=2
+  au InsertEnter * hi StatusLine ctermbg=235 ctermfg=2
   au InsertLeave * hi StatusLine ctermbg=240 ctermfg=12
+endif
+" adapted to GUI term
+if version >= 700
+  au InsertEnter * hi StatusLine guibg=bg guifg=LightGreen
+  au InsertLeave * hi StatusLine guibg=bg guifg=fg
 endif
 
 " highlight StatusLine ctermfg=black ctermbg=white
