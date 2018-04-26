@@ -106,9 +106,6 @@ inoremap <C-@> <C-x><C-o>
 " Sets how many lines of history VIM has to remember
 set history=500
 
-" Set to auto read when a file is changed from the outside
-set autoread
-
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
@@ -491,6 +488,9 @@ set history=500
 
 " Set to auto read when a file is changed from the outside
 set autoread
+au WinEnter * checktime
+" Loop every 4 seconds, checking for file change
+au CursorHold * checktime | call feedkeys("lh")
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
