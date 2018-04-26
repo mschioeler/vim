@@ -111,9 +111,8 @@ set path+=**
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
-" make Ctrl+Space autocomplete
-inoremap <C-@> <C-n>
+" make Ctrl+Space omnicomplete
+inoremap <C-@> <C-x><C-o>
 " inoremap <Tab> <C-n>
 " inoremap <S-Tab> <C-P>
 
@@ -346,4 +345,17 @@ map <leader>pp :setlocal paste!<cr>
 
 " make the status bar more subtle and nice looking with dark theme
 highlight StatusLine ctermfg=black ctermbg=white
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Ruby on Rails
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Model
+nmap <leader>rm :e app/models/
+" View
+nmap <leader>rv :e app/views/
+" Controller
+nmap <leader>rc :e app/controllers/
+" Routes
+nmap <leader>rr :e config/routes.rb
 
