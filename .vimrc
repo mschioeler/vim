@@ -5,9 +5,18 @@
 set nocompatible
 
 " Enable filetype plugins
-" Set utf8 as standard encoding 
+filetype plugin indent on
 
+" Set utf8 as standard encoding 
 set encoding=utf8
+
+" highlight the status bar when in insert mode
+" from ChrisHunt
+highlight StatusLine ctermfg=black ctermbg=white
+if version >= 700
+  au InsertLeave * highlight StatusLine ctermfg=black ctermbg=white
+  au InsertEnter * highlight StatusLine ctermfg=green ctermbg=black
+endif
 
 filetype plugin on
 filetype indent on
@@ -27,9 +36,6 @@ call plug#end()
 " =========== ABBREVIATIONS ===========
 nnoremap ,psvm ipublic static void main(String[] args) {<CR><CR>}<ESC>kI
  
-" now
-" set autoindent "automatically indent new lines
-
 "a tab counts as 2 spaces (default is 4)
 set tabstop=2
 
@@ -173,20 +179,8 @@ set showmatch
 set mat=2
 
 " No annoying sound on errors
-set noerrorbells
-set novisualbell
-" set t_vb=
+set visualbell
 set tm=500
-
-" " Properly disable sound on errors on MacVim
-" if has("gui_macvim")
-"     autocmd GUIEnter * set vb t_vb=
-" endif
-
-
-" " Add a bit extra margin to the left
-" set foldcolumn=1
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -339,6 +333,7 @@ map <C-l> <C-W>l
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 
@@ -346,70 +341,9 @@ map <leader>ss :setlocal spell!<cr>
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" " Remove the Windows ^M - when the encodings gets messed up
-" noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-" " Quickly open a buffer for scribble
-" map <leader>q :e ~/buffer<cr>
-
-"" " Quickly open a markdown buffer for scribble
-"" map <leader>x :e ~/buffer.md<cr>
-
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
+" make the status bar more subtle and nice looking with dark theme
+highlight StatusLine ctermfg=black ctermbg=white
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" => Helper functions
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"" Returns true if paste mode is enabled
-"function! HasPaste()
-"    if &paste
-"        return 'PASTE MODE  '
-"    endif
-"    return ''
-"endfunction
-
-"" " Don't close window, when deleting a buffer
-"" command! Bclose call <SID>BufcloseCloseIt()
-"" function! <SID>BufcloseCloseIt()
-""     let l:currentBufNum = bufnr("%")
-""     let l:alternateBufNum = bufnr("#")
-
-""     if buflisted(l:alternateBufNum)
-""         buffer #
-""     else
-""         bnext
-""     endif
-
-""     if bufnr("%") == l:currentBufNum
-""         new
-""     endif
-
-""     if buflisted(l:currentBufNum)
-""         execute("bdelete! ".l:currentBufNum)
-""     endif
-"" endfunction
-
-"" function! CmdLine(str)
-""     call feedkeys(":" . a:str)
-"" endfunction 
-
-"" function! VisualSelection(direction, extra_filter) range
-""     let l:saved_reg = @"
-""     execute "normal! vgvy"
-
-""     let l:pattern = escape(@", "\\/.*'$^~[]")
-""     let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-""     if a:direction == 'gv'
-""         call CmdLine("Ack '" . l:pattern . "' " )
-""     elseif a:direction == 'replace'
-""         call CmdLine("%s" . '/'. l:pattern . '/')
-""     endif
-
-""     let @/ = l:pattern
-""     let @" = l:saved_reg
-"" 		A
-"" endfunction
