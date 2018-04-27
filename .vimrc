@@ -56,9 +56,9 @@ nnoremap Æ ?
 nnoremap Å <PageUp>
 nnoremap Ø <PageDown>
 
-" swap soft and har BOL
-nnoremap 0 ^
-nnoremap ^ 0
+" " swap soft and har BOL
+" nnoremap 0 ^
+" nnoremap ^ 0
 
 " " toggle between hybrid and absolute line numbers when toggling insert/normal mode
 " augroup numbertoggle
@@ -99,9 +99,9 @@ set path+=**
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " make Ctrl+Space omnicomplete
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
 inoremap <C-@> <C-x><C-o>
-" inoremap <Tab> <C-n>
-" inoremap <S-Tab> <C-P>
 
 " Sets how many lines of history VIM has to remember
 set history=500
@@ -369,23 +369,15 @@ endif
 " highlight the status bar when in insert mode
 " from ChrisHunt
 if version >= 700
-  au InsertEnter * hi StatusLine ctermbg=235 ctermfg=2
-  au InsertLeave * hi StatusLine ctermbg=240 ctermfg=12
+  if has("termguicolors")
+    " adapted to GUI term
+    au InsertEnter * hi StatusLine guibg=bg guifg=LightGreen
+    au InsertLeave * hi StatusLine guibg=bg guifg=fg
+  else
+    au InsertEnter * hi StatusLine ctermbg=bg ctermfg=2
+    au InsertLeave * hi StatusLine ctermbg=bg ctermfg=fg
+  endif
 endif
-" adapted to GUI term
-if version >= 700
-  au InsertEnter * hi StatusLine guibg=bg guifg=LightGreen
-  au InsertLeave * hi StatusLine guibg=bg guifg=fg
-endif
-
-" highlight StatusLine ctermfg=black ctermbg=white
-" if version >= 700
-"   au InsertLeave * highlight StatusLine ctermfg=black ctermbg=white
-"   au InsertEnter * highlight StatusLine ctermfg=green ctermbg=black
-" endif
-
-filetype plugin on
-filetype indent on
 
 " load plugins
 " set rtp+=~/.vim/pack/mschioeler/start/vim-arpeggio/ " TODO doesnt work
@@ -712,9 +704,6 @@ map <leader>ss :setlocal spell!<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
-
-" make the status bar more subtle and nice looking with dark theme
-highlight StatusLine ctermfg=black ctermbg=white
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ruby on Rails
