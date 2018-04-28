@@ -91,9 +91,6 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
-" Fast saving
-nmap <leader>w :w!<cr>
-
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
@@ -238,15 +235,14 @@ set laststatus=2
 " like <leader>w saves the current file
 let mapleader = ","
 
+" Fast saving
+nmap <leader>w :w!<cr>
+
 " powerful: create curly brace block
-inoremap <leader><CR> {<CR>}<ESC>O
+inoremap <leader>æ {<CR>}<ESC>O
 
 " make Ctrl+Space omnicomplete
 inoremap <C-@> <C-x><C-o>
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
@@ -260,7 +256,11 @@ nnoremap ø }
 nnoremap Å <PageUp>
 nnoremap Ø <PageDown>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" erb= starts evaluation tag
+" see :h rails-surround
+nnoremap <leader>erb= o<%=  %\><ESC>3h
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""b
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -273,19 +273,6 @@ map <leader>ss :setlocal spell!<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Ruby on Rails
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Model
-nmap <leader>rm :e app/models/
-" View
-nmap <leader>rv :e app/views/
-" Controller
-nmap <leader>rc :e app/controllers/
-" Routes
-nmap <leader>rr :e config/routes.rb
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
