@@ -23,6 +23,7 @@ Plug 'tpope/vim-commentary'
 Plug 'vim-ruby/vim-ruby'
 Plug 'scrooloose/nerdtree'
 Plug 'mattn/emmet-vim'
+Plug 'kien/ctrlp.vim'
 " Plug 'shmargum/vim-sass-colors'
 call plug#end()
 
@@ -258,7 +259,7 @@ nnoremap Ø <PageDown>
 
 " erb= starts evaluation tag
 " see :h rails-surround
-nnoremap <leader>erb= o<%=  %\><ESC>3h
+nnoremap <leader>erb= o<%=  %><ESC>2hi
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""b
 " => Spell checking
@@ -284,9 +285,9 @@ set history=500
 
 " Set to auto read when a file is changed from the outside
 set autoread
-" au WinEnter * checktime "commented out for performance
+au WinEnter * checktime "commented out for performance
 " Loop every 4 seconds, checking for file change
-au CursorHold * checktime | call feedkeys("lh")
+" au CursorHold * checktime | call feedkeys("lh")
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
