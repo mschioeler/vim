@@ -22,6 +22,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'vim-ruby/vim-ruby'
 Plug 'scrooloose/nerdtree'
+Plug 'mattn/emmet-vim'
 " Plug 'shmargum/vim-sass-colors'
 call plug#end()
 
@@ -34,11 +35,7 @@ set tabstop=2
 "high light matches in search
 set hlsearch
 
-" set relativenumber 
 set number "show line numbers
-
-"undo actions > default 8
-set history=100
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -51,7 +48,7 @@ syntax on
 filetype plugin indent on
 
 " Allow hidden buffers, don't limit to 1 file per window/split
-set hidden
+" set hidden
 
 "set timeoutlen=100 ttimeoutlen=0
 "easy way to exit insert mode
@@ -85,9 +82,6 @@ set path+=**
 " make Ctrl+Space omnicomplete
 set omnifunc=syntaxcomplete#Complete
 inoremap <C-@> <C-x><C-o>
-
-" Sets how many lines of history VIM has to remember
-set history=500
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -128,7 +122,7 @@ endif
 set cmdheight=2
 
 " A buffer becomes hidden when it is abandoned
-set hid
+" set hid
 
 " Ignore case when searching
 set ignorecase
@@ -259,6 +253,12 @@ map <leader>pp :setlocal paste!<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
+
+nnoremap æ /
+nnoremap å {
+nnoremap ø }
+nnoremap Å <PageUp>
+nnoremap Ø <PageDown>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
