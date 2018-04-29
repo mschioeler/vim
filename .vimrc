@@ -13,7 +13,6 @@ set encoding=utf8
 
 " load plugins
 " set rtp+=~/.vim/pack/mschioeler/start/vim-arpeggio/ " TODO doesnt work
-" call arpeggio#load()
 call plug#begin()
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-rails'
@@ -24,11 +23,19 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'scrooloose/nerdtree'
 Plug 'mattn/emmet-vim'
 Plug 'kien/ctrlp.vim'
+Plug 'kana/vim-arpeggio'
+" Requires Python support, which requires MSYS2 on windows, 
+" which I can't get to work
+" Plug 'Valloric/YouCompleteMe'
 " Plug 'shmargum/vim-sass-colors'
 call plug#end()
+call arpeggio#load()
 
 " =========== ABBREVIATIONS ===========
 nnoremap ,psvm ipublic static void main(String[] args) {<CR><CR>}<ESC>kI
+
+" find in files
+nnoremap ,f :noautocmd vimgrep 
  
 "a tab counts as 2 spaces (default is 4)
 set tabstop=2
@@ -56,22 +63,11 @@ filetype plugin indent on
 inoremap jk <Esc>
 " Arpeggio inoremap jk <Esc>
 
-""more ergonomic special braces
-" Arpeggio nmap ½7 {
-" Arpeggio nmap ½8 [
-" Arpeggio nmap ½9 ]
-" Arpeggio nmap ½0 }
-
-""more ergonomic special braces
-nmap ½7 {
-nmap ½8 [
-nmap ½9 ]
-nmap ½0 }
-
-inoremap ½7 {
-inoremap ½8 [
-inoremap ½9 ]
-inoremap ½0 }
+" more ergonomic special braces
+Arpeggio noremap a7 {
+Arpeggio noremap a8 [
+Arpeggio noremap a9 ]
+Arpeggio noremap a0 }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -221,8 +217,8 @@ if version >= 700
   endif
 endif
 
-" Always show the status line 
-set laststatus=2
+" " Always show the status line 
+" set laststatus=2
 
 "" Format the status line
 " set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
@@ -252,10 +248,10 @@ map <leader>pp :setlocal paste!<cr>
 map <leader>pp :setlocal paste!<cr>
 
 nnoremap æ /
-nnoremap å {
-nnoremap ø }
-nnoremap Å <PageUp>
-nnoremap Ø <PageDown>
+nmap å [
+nmap ø ]
+nmap Å {
+nmap Ø }
 
 " erb= starts evaluation tag
 " see :h rails-surround
@@ -375,6 +371,8 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" horizontal split windows start below instead above current one
+set splitbelow
 " " Close the current buffer
 " map <leader>bd :Bclose<cr>:tabclose<cr>gT
 
