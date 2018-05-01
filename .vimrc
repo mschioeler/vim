@@ -12,7 +12,6 @@ filetype indent on
 set encoding=utf8
 
 " load plugins
-" set rtp+=~/.vim/pack/mschioeler/start/vim-arpeggio/ " TODO doesnt work
 call plug#begin()
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-rails'
@@ -24,6 +23,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'mattn/emmet-vim'
 Plug 'kien/ctrlp.vim'
 Plug 'kana/vim-arpeggio'
+" makes the auocomplete dialogue appear automatically
+Plug 'vim-scripts/AutoComplPop'
 " Requires Python support, which requires MSYS2 on windows, 
 " which I can't get to work
 " Plug 'Valloric/YouCompleteMe'
@@ -75,6 +76,9 @@ Arpeggio noremap a0 }
 
 "add subdirectories to file path (for file completion)
 set path+=**
+
+" Autocomplete longest common text among matches
+set completeopt=longest
 
 " make Ctrl+Space omnicomplete
 set omnifunc=syntaxcomplete#Complete
