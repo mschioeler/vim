@@ -3,6 +3,8 @@
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+profile start syntastic.log
+profile! file */syntastic/*
 
 " Enable filetype plugins
 filetype plugin on
@@ -19,18 +21,22 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-unimpaired'
 Plug 'scrooloose/nerdtree'
 Plug 'mattn/emmet-vim'
 Plug 'kien/ctrlp.vim'
 Plug 'kana/vim-arpeggio'
 " makes the auocomplete dialogue appear automatically
 Plug 'vim-scripts/AutoComplPop'
+Plug 'vim-syntastic/syntastic'
 " Requires Python support, which requires MSYS2 on windows, 
 " which I can't get to work
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'shmargum/vim-sass-colors'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
-call arpeggio#load()
+" call arpeggio#load()
 
 " =========== ABBREVIATIONS ===========
 nnoremap ,psvm ipublic static void main(String[] args) {<CR><CR>}<ESC>kI
@@ -64,11 +70,11 @@ filetype plugin indent on
 inoremap jk <Esc>
 " Arpeggio inoremap jk <Esc>
 
-" more ergonomic special braces
-Arpeggio noremap a7 {
-Arpeggio noremap a8 [
-Arpeggio noremap a9 ]
-Arpeggio noremap a0 }
+" " more ergonomic special braces
+" Arpeggio noremap a7 {
+" Arpeggio noremap a8 [
+" Arpeggio noremap a9 ]
+" Arpeggio noremap a0 }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -205,21 +211,23 @@ set smartindent "Smart indent
 set wrap "Wrap lines
 
 
-"""""""""""""""""""""""""""""""
-"" => Status line
-"""""""""""""""""""""""""""""""
-"highlight the status bar when in insert mode
-" from ChrisHunt
-if version >= 700
-  if has("termguicolors")
-    " adapted to GUI term
-    au InsertEnter * hi StatusLine guibg=bg guifg=LightGreen
-    au InsertLeave * hi StatusLine guibg=bg guifg=fg
-  else
-    au InsertEnter * hi StatusLine ctermbg=bg ctermfg=2
-    au InsertLeave * hi StatusLine ctermbg=bg ctermfg=fg
-  endif
-endif
+""""""""""""""""""""""""""""""""
+""" => Status line
+""""""""""""""""""""""""""""""""
+" Airline patched Fonts automatic popuplation
+" let g:airline_powerline_fonts = 1
+""highlight the status bar when in insert mode
+"" from ChrisHunt
+"if version >= 700
+"  if has("termguicolors")
+"    " adapted to GUI term
+"    au InsertEnter * hi StatusLine guibg=bg guifg=LightGreen
+"    au InsertLeave * hi StatusLine guibg=bg guifg=fg
+"  else
+"    au InsertEnter * hi StatusLine ctermbg=bg ctermfg=2
+"    au InsertLeave * hi StatusLine ctermbg=bg ctermfg=fg
+"  endif
+"endif
 
 " " Always show the status line 
 " set laststatus=2
@@ -251,11 +259,31 @@ map <leader>pp :setlocal paste!<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
+" function! s:mapNonInsert(from, to)
+"   nmap from to
+"   omap from to
+"   xmap from to
+" endfunction
 nnoremap æ /
 nmap å [
 nmap ø ]
 nmap Å {
 nmap Ø }
+omap å [
+omap ø [
+omap Å ]
+xmap Ø [
+xmap å ]
+omap ø ]
+xmap Å [
+xmap Ø ]
+
+" nmap < [
+" nmap > ]
+" omap < [
+" omap > ]
+" xmap < [
+" xmap > ]
 
 " erb= starts evaluation tag
 " see :h rails-surround
@@ -265,8 +293,8 @@ nnoremap <leader>erb= o<%=  %><ESC>2hi
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
+" Pressing  will toggle and untoggle spell checking
+map <F2> :setlocal spell!<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
@@ -425,3 +453,36 @@ nmap <leader>rv :e app/views/
 nmap <leader>rc :e app/controllers/
 " Routes
 nmap <leader>rr :e config/routes.rb
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Syntastic
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" recommended default settings https://github.com/vim-syntastic/syntastic#settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+" install this beautiful gem with 'gem install rubocop'
+" both a syntax checker and a style/best-practice checker
+let g:syntastic_ruby_checkers = ['rubocop']
+
+" If you use `:mksession` to save Vim sessions you should probably make sure to
+" remove option "blank" from 'sessionoptions': >
+    set sessionoptions-=blank
+" <
+" This will prevent `:mksession` from saving |syntastic-error-window| as empty
+" quickfix windows.
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Tags
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" remap go to tag
+" nnoremap <C-æ> <C-]> 
+"
+
