@@ -35,6 +35,8 @@ Plug 'vim-syntastic/syntastic'
 " Plug 'shmargum/vim-sass-colors'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 " call arpeggio#load()
 
@@ -270,20 +272,19 @@ nmap ø ]
 nmap Å {
 nmap Ø }
 omap å [
-omap ø [
-omap Å ]
+omap ø ]
+omap Å {
+omap ø }
 xmap Ø [
 xmap å ]
-omap ø ]
-xmap Å [
-xmap Ø ]
-
-" nmap < [
-" nmap > ]
-" omap < [
-" omap > ]
-" xmap < [
-" xmap > ]
+xmap Å {
+xmap Ø }
+vmap Ø [
+vmap å ]
+vmap Å {
+vmap Ø }
+nmap ø <C-]>
+nmap å <C-[>
 
 " erb= starts evaluation tag
 " see :h rails-surround
