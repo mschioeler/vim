@@ -21,6 +21,8 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+" asynchronous dispatch of external programs
+Plug 'tpope/vim-dispatch'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-unimpaired'
 Plug 'scrooloose/nerdtree'
@@ -40,6 +42,8 @@ Plug 'vim-airline/vim-airline-themes'
 " automatically update tags
 Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
+
+Plug 'michaeljsmith/vim-indent-object'
 " call arpeggio#load()
 
 " =========== ABBREVIATIONS ===========
@@ -194,6 +198,7 @@ set background=dark
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
+set ff=unix
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
