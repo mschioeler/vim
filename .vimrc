@@ -20,6 +20,7 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-unimpaired'
 Plug 'scrooloose/nerdtree'
@@ -36,6 +37,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" automatically update tags
 Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 " call arpeggio#load()
@@ -217,7 +219,8 @@ set wrap "Wrap lines
 """ => Status line
 """"""""""""""""""""""""""""""""
 " Airline patched Fonts automatic popuplation
-" let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
+let g:airline_section_b = '%{fugitive#statusline()}'
 ""highlight the status bar when in insert mode
 "" from ChrisHunt
 "if version >= 700
