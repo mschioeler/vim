@@ -41,9 +41,9 @@ Plug 'vim-airline/vim-airline-themes'
 
 " automatically update tags
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'michaeljsmith/vim-indent-object'
 call plug#end()
 
-Plug 'michaeljsmith/vim-indent-object'
 " call arpeggio#load()
 
 " =========== ABBREVIATIONS ===========
