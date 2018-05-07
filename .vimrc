@@ -198,7 +198,6 @@ set background=dark
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
-set ff=unix
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
