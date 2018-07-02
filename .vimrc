@@ -11,7 +11,7 @@ filetype plugin on
 filetype indent on
 
 " Set utf8 as standard encoding
-set encoding=latin1
+" set encoding=utf-8
 
 " load plugins
 call plug#begin()
@@ -284,13 +284,13 @@ nmap Ø }
 omap å [
 omap ø ]
 omap Å {
-omap ø }
-xmap Ø [
-xmap å ]
+omap Ø }
+xmap å [
+xmap ø ]
 xmap Å {
 xmap Ø }
-vmap Ø [
-vmap å ]
+vmap å [
+vmap ø ]
 vmap Å {
 vmap Ø }
 
