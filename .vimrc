@@ -1,5 +1,5 @@
 ""  If you don't understand a setting in here, just type ':h setting'.
-"  
+"
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -10,8 +10,8 @@ profile! file */syntastic/*
 filetype plugin on
 filetype indent on
 
-" Set utf8 as standard encoding 
-set encoding=utf8
+" Set utf8 as standard encoding
+set encoding=latin1
 
 " load plugins
 call plug#begin()
@@ -32,7 +32,7 @@ Plug 'kana/vim-arpeggio'
 " makes the auocomplete dialogue appear automatically
 Plug 'vim-scripts/AutoComplPop'
 Plug 'vim-syntastic/syntastic'
-" Requires Python support, which requires MSYS2 on windows, 
+" Requires Python support, which requires MSYS2 on windows,
 " which I can't get to work
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'shmargum/vim-sass-colors'
@@ -42,9 +42,12 @@ Plug 'vim-airline/vim-airline-themes'
 " automatically update tags
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'michaeljsmith/vim-indent-object'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'othree/html5.vim'
 call plug#end()
 
-" call arpeggio#load()
+call arpeggio#load()
 
 " =========== ABBREVIATIONS ===========
 nnoremap ,psvm ipublic static void main(String[] args) {<CR><CR>}<ESC>kI
@@ -111,7 +114,7 @@ if has('mouse')
   set mouse=a
 endif
 
-" :W sudo saves the file 
+" :W sudo saves the file
 " (useful for handling the permission-denied error)
 " command W w !sudo tee % > /dev/null
 
@@ -139,23 +142,23 @@ set cmdheight=2
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
 set hlsearch
 
 " Makes search act like search in modern browsers
-set incsearch 
+set incsearch
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw 
+set lazyredraw
 
 " For regular expressions turn magic on
 set magic
 
 " Show matching brackets when text indicator is over them
-set showmatch 
+set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -168,7 +171,7 @@ set tm=500
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Enable syntax highlighting
-syntax enable 
+syntax enable
 
 " enable 24 bit colors if available
 if has("termguicolors")
@@ -197,7 +200,7 @@ endtry
 set background=dark
 
 " Use Unix as the standard file type
-set ffs=unix,dos,mac
+" set ffs=unix,dos,mac
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -224,7 +227,7 @@ set wrap "Wrap lines
 """"""""""""""""""""""""""""""""
 " Airline patched Fonts automatic popuplation
 let g:airline_powerline_fonts = 1
-let g:airline_section_b = '%{fugitive#statusline()}'
+let g:airline_section_b = "%{matchstr(fugitive#statusline(), '(.*)')}"
 ""highlight the status bar when in insert mode
 "" from ChrisHunt
 "if version >= 700
@@ -238,7 +241,7 @@ let g:airline_section_b = '%{fugitive#statusline()}'
 "  endif
 "endif
 
-" " Always show the status line 
+" " Always show the status line
 " set laststatus=2
 
 "" Format the status line
@@ -257,7 +260,7 @@ let mapleader = ","
 nmap <leader>w :w!<cr>
 
 " powerful: create curly brace block
-inoremap <leader>Ã¦ {<CR>}<ESC>O
+inoremap <leader>ÃƒÂ¦ {<CR>}<ESC>O
 
 " make Ctrl+Space omnicomplete
 inoremap <C-@> <C-x><C-o>
@@ -273,25 +276,26 @@ map <leader>pp :setlocal paste!<cr>
 "   omap from to
 "   xmap from to
 " endfunction
-nnoremap Ã¦ /
-nmap Ã¥ [
-nmap Ã¸ ]
-nmap Ã… {
-nmap Ã˜ }
-omap Ã¥ [
-omap Ã¸ ]
-omap Ã… {
-omap Ã¸ }
-xmap Ã˜ [
-xmap Ã¥ ]
-xmap Ã… {
-xmap Ã˜ }
-vmap Ã˜ [
-vmap Ã¥ ]
-vmap Ã… {
-vmap Ã˜ }
-nmap Ã¸ <C-]>
-nmap Ã¥ <C-[>
+nnoremap æ /
+nmap å [
+nmap ø ]
+nmap Å {
+nmap Ø }
+omap å [
+omap ø ]
+omap Å {
+omap ø }
+xmap Ø [
+xmap å ]
+xmap Å {
+xmap Ø }
+vmap Ø [
+vmap å ]
+vmap Å {
+vmap Ø }
+
+Arpeggio inoremap jæ {}<Esc>i
+Arpeggio inoremap lk []<Esc>i
 
 " erb= starts evaluation tag
 " see :h rails-surround
@@ -325,7 +329,7 @@ au WinEnter * checktime "commented out for performance
 " Loop every 4 seconds, checking for file change
 " au CursorHold * checktime | call feedkeys("lh")
 
-" :W sudo saves the file 
+" :W sudo saves the file
 " (useful for handling the permission-denied error)
 " command W w !sudo tee % > /dev/null
 
@@ -346,53 +350,6 @@ set wildmenu
 
 " Height of the command bar
 set cmdheight=2
-
-" Ignore case when searching
-set ignorecase
-
-" When searching try to be smart about cases 
-set smartcase
-
-" Highlight search results
-set hlsearch
-
-" Makes search act like search in modern browsers
-set incsearch 
-
-" Don't redraw while executing macros (good performance config)
-set lazyredraw 
-
-" For regular expressions turn magic on
-set magic
-
-" Show matching brackets when text indicator is over them
-set showmatch 
-" How many tenths of a second to blink when matching brackets
-set mat=2
-
-" No annoying sound on errors
-set visualbell
-set tm=500
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" => Text, tab and indent related
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Use spaces instead of tabs
-set expandtab
-
-" Be smart when using tabs ;)
-set smarttab
-
-" 1 tab == 2 spaces
-set shiftwidth=2
-set tabstop=2
-
-set autoindent "Auto indent
-set smartindent "Smart indent
-set wrap "Wrap lines
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => Moving around, tabs, windows and buffers
@@ -472,13 +429,15 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 " install this beautiful gem with 'gem install rubocop'
 " both a syntax checker and a style/best-practice checker
-let g:syntastic_ruby_checkers = ['rubocop']
+" let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_ruby_checkers = []
+let g:syntastic_sass_checkers = []
 
 " If you use `:mksession` to save Vim sessions you should probably make sure to
 " remove option "blank" from 'sessionoptions': >
@@ -491,6 +450,6 @@ let g:syntastic_ruby_checkers = ['rubocop']
 " => Tags
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " remap go to tag
-" nnoremap <C-Ã¦> <C-]> 
+" nnoremap <C-ÃƒÂ¦> <C-]>
 "
 
