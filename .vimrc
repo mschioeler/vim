@@ -3,6 +3,7 @@
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+
 profile start syntastic.log
 profile! file */syntastic/*
 
@@ -301,12 +302,15 @@ Arpeggio inoremap lk []<Esc>i
 " see :h rails-surround
 nnoremap <leader>erb= o<%=  %><ESC>2hi
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""b
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Pressing  will toggle and untoggle spell checking
 map <F2> :setlocal spell!<CR>
+
+autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd FileType gitcommit setlocal spell
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
