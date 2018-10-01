@@ -13,6 +13,7 @@ filetype indent on
 
 " Set utf8 as standard encoding
 " set encoding=utf-8
+" set fileencoding=utf-8
 
 " load plugins
 call plug#begin()
@@ -41,7 +42,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " automatically update tags
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -261,7 +262,8 @@ let mapleader = ","
 nmap <leader>w :w!<cr>
 
 " powerful: create curly brace block
-inoremap <leader>Ã¦ {<CR>}<ESC>O
+inoremap <leader>� {<CR>}<ESC>O
+inoremap <leader>� {<CR>}<ESC>O
 
 " make Ctrl+Space omnicomplete
 inoremap <C-@> <C-x><C-o>
@@ -428,20 +430,20 @@ nmap <leader>rr :e config/routes.rb
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " recommended default settings https://github.com/vim-syntastic/syntastic#settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 0
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
 
 " install this beautiful gem with 'gem install rubocop'
 " both a syntax checker and a style/best-practice checker
 " let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_ruby_checkers = []
-let g:syntastic_sass_checkers = []
+"let g:syntastic_ruby_checkers = []
+"let g:syntastic_sass_checkers = []
 
 " If you use `:mksession` to save Vim sessions you should probably make sure to
 " remove option "blank" from 'sessionoptions': >
@@ -456,4 +458,3 @@ let g:syntastic_sass_checkers = []
 " remap go to tag
 " nnoremap <C-Ã¦> <C-]>
 "
-
