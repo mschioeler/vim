@@ -30,7 +30,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'scrooloose/nerdtree'
 Plug 'mattn/emmet-vim'
 Plug 'kien/ctrlp.vim'
-Plug 'kana/vim-arpeggio'
 " makes the auocomplete dialogue appear automatically
 Plug 'vim-scripts/AutoComplPop'
 Plug 'vim-syntastic/syntastic'
@@ -49,7 +48,6 @@ Plug 'mxw/vim-jsx'
 Plug 'othree/html5.vim'
 call plug#end()
 
-call arpeggio#load()
 
 " =========== ABBREVIATIONS ===========
 nnoremap ,psvm ipublic static void main(String[] args) {<CR><CR>}<ESC>kI
@@ -81,13 +79,6 @@ filetype plugin indent on
 "set timeoutlen=100 ttimeoutlen=0
 "easy way to exit insert mode
 inoremap jk <Esc>
-" Arpeggio inoremap jk <Esc>
-
-" " more ergonomic special braces
-" Arpeggio noremap a7 {
-" Arpeggio noremap a8 [
-" Arpeggio noremap a9 ]
-" Arpeggio noremap a0 }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -304,8 +295,6 @@ inoremap kl []<Esc>i
 inoremap jæ {}<Esc>i
 inoremap jÃ¦ {}<Esc>i
 inoremap lk []<Esc>i
-" Arpeggio inoremap jæ {}<Esc>i
-" Arpeggio inoremap lk []<Esc>i
 
 " erb= starts evaluation tag
 " see :h rails-surround
