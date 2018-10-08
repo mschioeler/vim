@@ -41,13 +41,11 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " automatically update tags
-" Plug 'ludovicchabant/vim-gutentags'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'othree/html5.vim'
 call plug#end()
-
 
 " =========== ABBREVIATIONS ===========
 nnoremap ,psvm ipublic static void main(String[] args) {<CR><CR>}<ESC>kI
@@ -106,11 +104,6 @@ set viminfo^=%
 if has('mouse')
   set mouse=a
 endif
-
-" :W sudo saves the file
-" (useful for handling the permission-denied error)
-" command W w !sudo tee % > /dev/null
-
 
 " Turn on the Wild menu
 " set wildmenu
@@ -221,25 +214,6 @@ set wrap "Wrap lines
 " Airline patched Fonts automatic popuplation
 let g:airline_powerline_fonts = 1
 let g:airline_section_b = "%{matchstr(fugitive#statusline(), '(.*)')}"
-""highlight the status bar when in insert mode
-"" from ChrisHunt
-"if version >= 700
-"  if has("termguicolors")
-"    " adapted to GUI term
-"    au InsertEnter * hi StatusLine guibg=bg guifg=LightGreen
-"    au InsertLeave * hi StatusLine guibg=bg guifg=fg
-"  else
-"    au InsertEnter * hi StatusLine ctermbg=bg ctermfg=2
-"    au InsertLeave * hi StatusLine ctermbg=bg ctermfg=fg
-"  endif
-"endif
-
-" " Always show the status line
-" set laststatus=2
-
-"" Format the status line
-" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" => Editing mappings
@@ -265,11 +239,6 @@ map <leader>pp :setlocal paste!<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-" function! s:mapNonInsert(from, to)
-"   nmap from to
-"   omap from to
-"   xmap from to
-" endfunction
 nnoremap æ /
 nnoremap Ã /
 nmap å [
@@ -333,22 +302,10 @@ au WinEnter * checktime "commented out for performance
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
-" command W w !sudo tee % > /dev/null
-
+command W w !sudo tee % > /dev/null
 
 " Turn on the Wild menu
 set wildmenu
-
-" " Ignore compiled files
-" set wildignore=*.o,*~,*.pyc
-" if has("win16") || has("win32")
-"     set wildignore+=.git\*,.hg\*,.svn\*
-" else
-"     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-" endif
-
-""Always show current position
-"set ruler
 
 " Height of the command bar
 set cmdheight=2
@@ -372,41 +329,6 @@ map <C-l> <C-W>l
 
 " horizontal split windows start below instead above current one
 set splitbelow
-" " Close the current buffer
-" map <leader>bd :Bclose<cr>:tabclose<cr>gT
-
-"" Close all the buffers
-"map <leader>ba :bufdo bd<cr>
-
-"map <leader>l :bnext<cr>
-"map <leader>h :bprevious<cr>
-
-"" Useful mappings for managing tabs
-"map <leader>tn :tabnew<cr>
-"map <leader>to :tabonly<cr>
-"map <leader>tc :tabclose<cr>
-"map <leader>tm :tabmove 
-"map <leader>t<leader> :tabnext 
-
-"" Let 'tl' toggle between this and the last accessed tab
-"let g:lasttab = 1
-"nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-"au TabLeave * let g:lasttab = tabpagenr()
-
-
-"" Opens a new tab with the current buffer's path
-"" Super useful when editing files in the same directory
-"map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-"" Switch CWD to the directory of the open buffer
-"map <leader>cd :cd %:p:h<cr>:pwd<cr>
-
-"" Specify the behavior when switching between buffers 
-"try
-"  set switchbuf=useopen,usetab,newtab
-"  set stal=2
-"catch
-"endtry
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ruby on Rails
@@ -425,32 +347,8 @@ nmap <leader>rr :e config/routes.rb
 " => Syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" recommended default settings https://github.com/vim-syntastic/syntastic#settings
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 0
-"let g:syntastic_check_on_open = 0
-"let g:syntastic_check_on_wq = 0
-
-" install this beautiful gem with 'gem install rubocop'
-" both a syntax checker and a style/best-practice checker
-" let g:syntastic_ruby_checkers = ['rubocop']
-"let g:syntastic_ruby_checkers = []
-"let g:syntastic_sass_checkers = []
-
 " If you use `:mksession` to save Vim sessions you should probably make sure to
-" remove option "blank" from 'sessionoptions': >
-    set sessionoptions-=blank
-" <
+" remove option "blank" from 'sessionoptions': 
 " This will prevent `:mksession` from saving |syntastic-error-window| as empty
 " quickfix windows.
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Tags
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" remap go to tag
-" nnoremap <C-ÃƒÂ¦> <C-]>
-"
+set sessionoptions-=blank
