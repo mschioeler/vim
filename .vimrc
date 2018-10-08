@@ -12,8 +12,8 @@ filetype plugin on
 filetype indent on
 
 " Set utf8 as standard encoding
-" set encoding=utf-8
-" set fileencoding=utf-8
+set encoding=latin1
+set fileencoding=latin1
 
 " load plugins
 call plug#begin()
@@ -280,6 +280,7 @@ map <leader>pp :setlocal paste!<cr>
 "   xmap from to
 " endfunction
 nnoremap æ /
+nnoremap Ã /
 nmap å [
 nmap ø ]
 nmap Å {
@@ -297,8 +298,14 @@ vmap ø ]
 vmap Å {
 vmap Ø }
 
-Arpeggio inoremap jæ {}<Esc>i
-Arpeggio inoremap lk []<Esc>i
+inoremap æj {}<Esc>i
+inoremap Ãj {}<Esc>i
+inoremap kl []<Esc>i
+inoremap jæ {}<Esc>i
+inoremap jÃ¦ {}<Esc>i
+inoremap lk []<Esc>i
+" Arpeggio inoremap jæ {}<Esc>i
+" Arpeggio inoremap lk []<Esc>i
 
 " erb= starts evaluation tag
 " see :h rails-surround
