@@ -1,2 +1,2 @@
 #!/bin/bash
-mv .vimrc ~
+cp .vimrc ~
